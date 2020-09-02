@@ -169,7 +169,8 @@ cursor_cs.execute('''
 ```
 
 ## Commit changes
-Commit changes to the database
+Commit changes to the database.
+
 `connection.commit()`
 
 # Conclusion
