@@ -96,8 +96,7 @@ cursor_cs.execute("""
     join delta_raw_adm on delta_ss.admid = delta_raw_adm.admid;
   """)
 ```
-## Analyzing 
-to update query planner statistics
+## Analyzing to update query planner statistics
 Calling ANALYZE on a table that has undergone significant, recent change can improve future query performance quite a bit becaue the query planner will have more accurate statistics about the database.
 
 ## Normalize database
