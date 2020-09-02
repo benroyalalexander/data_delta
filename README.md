@@ -10,7 +10,7 @@ The data is provided in double pipe-delimited format ("||") data files that can 
 `subprocess.run(f"sed 's/||/\t/g' {raw_file} > {raw_file_sed}", shell=True)`
 
 ## Creating raw_data table
-Use psycopg2 to create the table for our new TSV data
+Use psycopg2 to create the table for our new TSV data.
 
 ```
 cursor_cs.execute("""
@@ -25,7 +25,7 @@ cursor_cs.execute("""
 
 
 ## Loading the raw_data table
-Use the postgres COPY command to directly populate the table
+Use the postgres COPY command to directly populate the table.
 
 
 ```
@@ -96,7 +96,8 @@ cursor_cs.execute("""
     join delta_raw_adm on delta_ss.admid = delta_raw_adm.admid;
   """)
 ```
-## Analyzing tables to update query planner statistics
+## Analyzing 
+to update query planner statistics
 Calling ANALYZE on a table that has undergone significant, recent change can improve future query performance quite a bit becaue the query planner will have more accurate statistics about the database.
 
 ## Normalize database
@@ -151,7 +152,7 @@ Up until this point I haven't touched any of the production tables. We've only b
 
 In order to preserve referential integrity the database needs to be updated in a specific order. Inserting new entries into ancillary tables come first because then the foreign keys are available when updating the main tables. Consequently, the update needs to be done in two complete database passes. This is where all the SQL preprocessing comes in handy. Now that the data is in the correct format I can use python to make the changes to the production database.
 
-* First pass: Inserting new rows into ancillary tables. Then create a set of distinct ids that correspond to the main tables entries to be updated
+* First pass: Inserting new rows into ancillary tables. Then create a set of distinct ids that correspond to the main table's entries to be updated
 * Second pass: Update or insert into main table
 
 ## Detecting and deleting orphaned rows
