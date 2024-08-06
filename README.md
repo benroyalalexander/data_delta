@@ -97,7 +97,7 @@ cursor_cs.execute("""
   """)
 ```
 ## Analyzing to update query planner statistics
-Calling ANALYZE on a table that has undergone significant, recent change can improve future query performance quite a bit becaue the query planner will have more accurate statistics about the database.
+Calling ANALYZE on a table that has undergone significant, recent change can improve future query performance quite a bit because the query planner will have more accurate statistics about the database.
 
 ## Normalize database
 The raw data is provided in one large table with no relations and lots of duplication. Our application obviously is using a relational database so we need to fit the data to our database schema by:
@@ -105,7 +105,7 @@ The raw data is provided in one large table with no relations and lots of duplic
 * Populating delta relational tables
 
 ## Adding keys and constraints to delta relational tables
-Creating table constraints like primary keys and indexes can really speed up query times once tables are populated but if populating a table from scratch it's much faster to add those constraints after the load has finished like I did here. The reason is because for every INSERT or UPDATE on a row all the rows indexes have to be maintained. If you have many indexes in a table, updating one row means updating one row and updating all of its indexes which can take a long time.
+Creating table constraints like primary keys and indexes can really speed up query times once tables are populated but if populating a table from scratch, it's much faster to add those constraints after the load has finished like I did here. The reason is because for every INSERT or UPDATE on a row all the rows indexes have to be maintained. If you have many indexes in a table, updating one row means updating one row and updating all of its indexes which can take a long time.
 
 ```
 cursor_cs.execute("""
@@ -174,4 +174,4 @@ Commit changes to the database.
 `connection.commit()`
 
 # Conclusion
-This project included architecting an application that solves a real-world data pipeline problem. This script automated the ingestion, cleaning, and updating of a large dataset as well as automated many database administration tasks required to tune the Postgres server for performance. The results were robust and consistent.
+This project included architecting an application that solves a real-world data pipeline problem. This script automated the ingestion, cleaning, and updating of a large dataset, as well as automated many database administration tasks required to tune the Postgres server for performance and the results were robust and consistent.
