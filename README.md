@@ -1,5 +1,7 @@
 # Production ETL pipeline to update large PostgreSQL database
 
+![DoorsUp Rubicon Database Diagram](https://github.com/user-attachments/assets/fc9044f7-ffae-42d6-a50f-ebe1c52215ac)
+
 ## The Goal
 I have a 20 million row postgres database with data about real estate ownership in 4 states; CA, UT, NV, and AZ. Our data supplier sends monthly updates with up to 12 million changes and I have to write a custom ETL script that will successfully ingest the data, standardize new address data through a 3rd-party API, and then update the production database with minimal negative impact to the application users.
 
